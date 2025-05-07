@@ -1,0 +1,18 @@
+html{
+    background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
+}
+body{
+    margin: 0%;
+}
+.menu{
+    background:linear-gradient(to right,#4069F8,#002462) ;
+    display: flex;
+    justify-content: space-around;  
+    align-items: center;
+}
+.menu ul{
+    list-style: none;
+}
+.img{
+    max-width: 100%;
+}
