@@ -10,7 +10,7 @@
 html{
     background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
 }
-@media (max-width:1080px)and(min-width:540px){
+@media (max-width:580px)and(min-width:860px){
     
 }
 body{
@@ -53,13 +53,39 @@ body{
     flex-grow: 2;    
 }
 
-.menu-container ul li:last-child{
+.menu-container ul.menu > li:last-child{
     text-align: right;
     padding-right: 20px;
 }
-.menu-container ul li img{ 
+.menu-container ul.menu li img{ 
     width: 75px;
 }
+
+.menu-container .submenu{
+    background: red;
+    max-height: 0; /* Começa com a altura mínima */
+    overflow: hidden; /* Garante que o conteúdo não transborde quando não visível */
+    display: none;
+    list-style: none;   
+    margin: 0;
+    padding: 0;
+    width: 90px;
+    position: absolute;
+    height: 150px;
+    height: auto;
+    transition: opacity 0.4s ease, visibility 0s 0.4s; /* Opacidade com transição e visibility com delay */
+    
+}
+
+.menu-container .submenu li{
+    width: 90px;
+}
+.menu-container .submenu.ativo{    
+    display: flex;
+    flex-direction: column; 
+    max-height: 150px; /* A altura máxima que o submenu pode atingir */
+}
+
 
 .cabecalho-banner img{
     width: 100%;
@@ -112,8 +138,7 @@ body{
 }
 
 .pratos-destaques .populares:not(:hover){
-    opacity: 0.5;
-    filter:blur(5px)
+    
 }
 
 /* .pratos-destaques2 div.img-container{
