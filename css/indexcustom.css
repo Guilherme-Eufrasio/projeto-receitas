@@ -62,16 +62,14 @@ body{
 }
 
 .menu-container .submenu{
-    background:#4069F8;
+    background:#264bce;
     max-height: 0; /* Começa com a altura mínima */
     overflow: hidden; /* Garante que o conteúdo não transborde quando não visível */
     display: none;
     list-style: none;   
     margin: 0;
     padding: 0;
-    width: 90px;
     position: absolute;
-    height: 150px;
     height: auto;
     transition: opacity 0.4s ease, visibility 0s 0.4s; /* Opacidade com transição e visibility com delay */
     
@@ -84,19 +82,29 @@ body{
     display: flex;
     flex-direction: column; 
     max-height: 150px; /* A altura máxima que o submenu pode atingir */
-    box-shadow: 0px 8px 21px 10px rgba(0, 0, 0, 0.384)
+    box-shadow: 0px 8px 20px 5px rgba(0, 0, 0, 0.274)
 }
+
+
+
 .seta{
     display: inline-block;
     width: 8px;
     height: 8px;
     border-right: 2px solid white; /* Cor da seta */
-    border-bottom: 2px solid white; /* Cor da seta */
-    transform: rotate(45deg); /* A seta começa apontando para a direita */
+    border-bottom: 2px solid white; /* Cor da seta */       
+    transform: rotate(225deg); /* A seta começa apontando para a direita */
     transition: transform 0.3s ease-in-out; /* Animação suave para a rotação */
-    margin-left: 8px; /* Espaço entre o texto e a seta */
+    margin-left: 14px; /* Espaço entre o texto e a seta */
+    margin-bottom: 4px;
 }
 
+.seta.fechado{
+    transform: rotate(225deg); /* A seta começa apontando para a direita */
+}
+.seta.aberto{
+    transform: rotate(45deg); /* A seta começa apontando para a direita */
+}
 
 .cabecalho-banner img{
     width: 100%;
@@ -107,7 +115,7 @@ body{
     color: #002462;
     font-family: chalet1;
     letter-spacing: 0px;
-    font-size: 46px;
+    font-size: 35px;
 }
     
 
@@ -126,7 +134,7 @@ body{
     color: #002462;
     font-family: chalet1;
     letter-spacing: 0px;
-    font-size: 46px;
+    font-size: 35px;
     overflow: hidden;
 }
 .pratos-destaques div {
@@ -134,22 +142,21 @@ body{
     align-items: center;
     
 }
+.pratos-destaques div p{
+    margin:15px;
+}
 .pratos-destaques .populares{
-    width: 525px;
+    width: 500px;
     height: 350px;
     border-radius: 33px;
     margin: 15px;
     -webkit-transition: -webkit-transform .5s ease;
-    transition: transform .5s ease;
+    transition: 0.5s;
 }
 
 .pratos-destaques .populares:hover{
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
-}
-
-.pratos-destaques .populares:not(:hover){
-    
 }
 
 /* .pratos-destaques2 div.img-container{
