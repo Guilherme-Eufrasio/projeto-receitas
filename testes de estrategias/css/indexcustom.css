@@ -10,7 +10,17 @@
 html{
     background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
 }
-@media (max-width:580px)and(min-width:860px){
+@media only screen and (max-width:580px){
+    .menu {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
+      }
     
 }
 body{
