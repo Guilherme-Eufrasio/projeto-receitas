@@ -1,0 +1,25 @@
+html{
+    background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
+}
+@media only screen and (max-width:450px) {
+    @font-face {
+        font-family: chalet1;
+        src: url(../fontes/ChaletComprime/ChaletComprime\ CologneSixty.ttf);
+    }
+    .sobre{
+        text-align: center;
+        font-family: chalet1;
+        color: #002462;
+        font-size: 35px;
+    }
+    .projeto{
+        font-size: 40px;
+        font-family: chalet1;
+        color: #4069F8;
+    }
+    .logo{
+        width: 90px;
+        display: flex;
+        justify-self: center;
+    }
+}
