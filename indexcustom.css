@@ -10,22 +10,10 @@
 html{
     background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
 }
-@media only screen and (max-width:580px){
-    .menu {
-        display: none;
-        flex-direction: column;
-        background-color: #333;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        padding: 10px;
-      }
-    
-}
 body{
     margin: 0%;
 }
+
 
 
 .menu-container{
@@ -167,6 +155,35 @@ body{
 .pratos-destaques .populares:hover{
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+}
+@media only screen and (max-width:580px){
+    .menu {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
+      }
+      body img{
+        margin: 0%;
+    }
+    .menu-container ul.menu{
+        display: none;
+    }
+    .pratos-destaques div {
+        display: grid;
+        align-items: center;
+    }
+    .pratos-destaques {
+        display: grid;
+    }
+    .pratos-destaques div p {
+        margin: 15px;
+        text-align: center;
+    }
 }
 
 /* .pratos-destaques2 div.img-container{
