@@ -1,7 +1,22 @@
 html{
     background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
 }
-@media only screen and (max-width:450px) {
+body{
+    background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
+}
+#menu-mobile{
+    background:linear-gradient(to right, #4069F8,#002462) ;
+}
+#icone{
+    background-color:#E1BA63 ;
+}
+#closeMenuBtn{
+    background-color: rgb(255, 22, 22);
+}
+#navbarCollapse{
+    background: linear-gradient(to right, #4068f896,#002462b7);
+}
+@media only screen and (max-width:576px) {
     @font-face {
         font-family: chalet1;
         src: url(../fontes/ChaletComprime/ChaletComprime\ CologneSixty.ttf);
@@ -15,11 +30,29 @@ html{
     .projeto{
         font-size: 40px;
         font-family: chalet1;
-        color: #4069F8;
+        color: black;
     }
     .logo{
         width: 90px;
         display: flex;
         justify-self: center;
     }
+    .criadores{
+        width: 60%;
+        border-radius: 20px;
+    }
+    .texto{
+        font-family: chalet1;
+        text-align: center;
+        font-size: 35px;
+    }
+    .dolado a img{
+        width: 40%;
+        margin: 15px;
+    }
+}
+@media (min-width: 576px) {
+    #menu-mobile{
+        display: none;
+    }    
 }

@@ -11,6 +11,7 @@ html{
     background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
 }
 body{
+    background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
     margin: 0%;
 }
 
@@ -184,6 +185,11 @@ body{
         margin: 15px;
         text-align: center;
     }
+}
+@media (min-width: 576px) {
+    #menu-mobile{
+        display: none;
+    }    
 }
 
 /* .pratos-destaques2 div.img-container{

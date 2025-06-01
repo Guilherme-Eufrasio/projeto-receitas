@@ -246,7 +246,7 @@ body{
     font-size: 39px;
     background-color: #ffae00;
 }
-@media only screen and (max-width:450px){
+@media only screen and (max-width:576px){
     .menu_todos img{
         width: 30%;
         padding-bottom: 20px;
