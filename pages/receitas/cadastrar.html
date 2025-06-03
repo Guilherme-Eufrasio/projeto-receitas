@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/cadastrado.css">
+    <title></title>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let usuarioLogado = null;
+            if (localStorage.getItem("usuarioLogado")) {
+                usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+                console.log(usuarioLogado);
+
+                document.title = "Seja bem-vindo " + usuarioLogado.nome;
+                document.getElementById("nome").innerText = usuarioLogado.nome;
+            } else {
+                window.location.href = "../login.html";
+            }
+        });
+
+    </script>
+    
+</head>
+<body>
+    <h1 id="nome">A</h1>
+    <h2>Minhas receitas:</h2>
+    <button class="bota w-100 btn btn-lg btn-primary" onclick="publicarReceita();">Adicionar</button>
+    <script>
+        function publicarReceita(){
+            window.location.href = "../adicionar.html";
+        }
+    </script>
+</body>
+</html>
