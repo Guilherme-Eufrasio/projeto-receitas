@@ -6,5 +6,29 @@
         "populares": "sim",
         "idUsuario": "1"
 
+    },
+    {
+        "nome": "Macarronada",
+        "img": "../img/rec-macarrao.JPG",
+        "receita":"",
+        "populares": "sim",
+        "idUsuario": "1"
+
+    },
+    {
+        "nome": "Frango a Milanesa",
+        "img": "../img/rec-frangoamilanesa.JPG",
+        "receita":"",
+        "populares": "sim",
+        "idUsuario": "1"
+
+    },
+    {
+        "nome": "Lasanha",
+        "img": "../img/rec-lasanha.JPG",
+        "receita":"",
+        "populares": "sim",
+        "idUsuario": "1"
+
     }
 ]

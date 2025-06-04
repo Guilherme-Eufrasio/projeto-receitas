@@ -169,7 +169,23 @@
         closeBtn.addEventListener("click", () => {
             navbarCollapse.hide();
         });
+
+
     });
+    
+    document.addEventListener("DOMContentLoaded", async () => {
+        if (!localStorage.getItem("receitas")) {
+            try {
+                const responseReceitas = await fetch("dados/receitas.json");
+                const dadosIniciaisReceitas = await responseReceitas.json();
+                localStorage.setItem("receitas", JSON.stringify(dadosIniciaisReceitas));
+            } catch (erro) {
+                console.error("Erro ao carregar receitas:", erro);
+            }
+        }
+    });
+
+  
 </script> 
 
     <!-- <hr>

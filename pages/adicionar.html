@@ -11,7 +11,13 @@
         <input type="text" id="nomeReceita" placeholder="Nome da Receita">
         <input type="text" id="receita" placeholder="Receita">
         <input type="url" id="imagemReceita" placeholder="Link da imagem da receita">
-        <p id="escolha">Mais Populares? <button>SIM</button></p>
+        <p id="escolha">Mais Populares? </p>
+        <select name="popularesReceita" id="popularesReceita">
+            <option value="sim">SIM</option>
+            <option value="nao">NÃO</option>
+        </select>
+        <br/>
+        
         <button onclick="adicionarReceita()">Adicionar</button>
     </form>
 
@@ -21,10 +27,35 @@
     <script>
         const data = localStorage.getItem("receitas");  
         receitas = data ? JSON.parse(data) : [];
+
         function adicionarReceita(){
+            
             let nomereceita = document.getElementById("nomeReceita").value
             let receitaDescricao = document.getElementById("receita").value
             let imagem = document.getElementById("imagemReceita").value
+            let popularesReceita = document.getElementById("popularesReceita").value 
+            let idUsu = JSON.parse(localStorage.getItem("usuarioLogado")).id
+            if (!localStorage.getItem("receitas")) {
+                const response =  fetch("../dados/receitas.json");
+                const dadosIniciais = response.json();
+                localStorage.setItem("jsonCarregado", 'true');    
+                localStorage.setItem("receitas", JSON.stringify(dadosIniciais));
+            }
+
+            const novoReceita = {
+                nome:nomereceita,
+                img:imagem,
+                receita:receitaDescricao,
+                populares:popularesReceita,
+                idUsuario: idUsu
+              };
+              
+
+              receitas.push(novoReceita);
+              salvarReceita();
+        }
+        function salvarReceita() {
+          localStorage.setItem("receitas", JSON.stringify(receitas));
         }
     </script>
 </body>
