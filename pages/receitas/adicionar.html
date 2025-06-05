@@ -47,7 +47,8 @@
                 img:imagem,
                 receita:receitaDescricao,
                 populares:popularesReceita,
-                idUsuario: idUsu
+                idUsuario: idUsu,
+                publicado: "nao"
               };
               
 
@@ -56,6 +57,7 @@
         }
         function salvarReceita() {
           localStorage.setItem("receitas", JSON.stringify(receitas));
+          window.location.href = "index.html";
         }
     </script>
 </body>

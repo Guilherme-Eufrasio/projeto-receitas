@@ -4,7 +4,8 @@
         "img": "../img/strogonoff.jpeg",
         "receita":"",
         "populares": "sim",
-        "idUsuario": "1"
+        "idUsuario": "1",
+        "publicado": "sim"
 
     },
     {
@@ -12,7 +13,8 @@
         "img": "../img/rec-macarrao.JPG",
         "receita":"",
         "populares": "sim",
-        "idUsuario": "1"
+        "idUsuario": "2",
+        "publicado": "sim"
 
     },
     {
@@ -20,7 +22,8 @@
         "img": "../img/rec-frangoamilanesa.JPG",
         "receita":"",
         "populares": "sim",
-        "idUsuario": "1"
+        "idUsuario": "2",
+        "publicado": "sim"
 
     },
     {
@@ -28,7 +31,8 @@
         "img": "../img/rec-lasanha.JPG",
         "receita":"",
         "populares": "sim",
-        "idUsuario": "1"
+        "idUsuario": "2",
+        "publicado": "sim"
 
     }
 ]
