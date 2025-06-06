@@ -1,3 +1,6 @@
 html{
-    background:linear-gradient(to right,#FAFF9F,#E1BA63) ;;
+    background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
+}
+body{
+    background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
 }

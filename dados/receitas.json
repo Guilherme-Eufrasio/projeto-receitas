@@ -1,11 +1,13 @@
 [
     {
-        "nome": "Strogonoff de Peixe",
+        "nome": "Strogonoff",
         "img": "../img/strogonoff.jpeg",
         "receita":"",
         "populares": "sim",
         "idUsuario": "1",
-        "publicado": "sim"
+        "publicado": "sim",
+        "categoria":"salgado",
+        "tempo_preparo": "45"
 
     },
     {
@@ -14,7 +16,9 @@
         "receita":"",
         "populares": "sim",
         "idUsuario": "2",
-        "publicado": "sim"
+        "publicado": "sim",
+        "categoria":"salgado",
+        "tempo_preparo": "30"
 
     },
     {
@@ -23,7 +27,9 @@
         "receita":"",
         "populares": "sim",
         "idUsuario": "2",
-        "publicado": "sim"
+        "publicado": "sim",
+        "categoria":"salgado",
+        "tempo_preparo": "40"
 
     },
     {
@@ -32,7 +38,9 @@
         "receita":"",
         "populares": "sim",
         "idUsuario": "2",
-        "publicado": "sim"
+        "publicado": "sim",
+        "categoria":"salgado",
+        "tempo_preparo": "90"
 
     }
 ]
