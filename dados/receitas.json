@@ -1,5 +1,6 @@
 [
     {
+        "id":"1",
         "nome": "Strogonoff",
         "img": "../img/strogonoff.jpeg",
         "receita":"",
@@ -11,17 +12,19 @@
 
     },
     {
+        "id":"2",
         "nome": "Macarronada",
         "img": "../img/rec-macarrao.JPG",
         "receita":"",
         "populares": "sim",
         "idUsuario": "2",
-        "publicado": "sim",
+        "publicado": "nao",
         "categoria":"salgado",
         "tempo_preparo": "30"
 
     },
     {
+        "id":"3",
         "nome": "Frango a Milanesa",
         "img": "../img/rec-frangoamilanesa.JPG",
         "receita":"",
@@ -33,6 +36,7 @@
 
     },
     {
+        "id":"4",
         "nome": "Lasanha",
         "img": "../img/rec-lasanha.JPG",
         "receita":"",

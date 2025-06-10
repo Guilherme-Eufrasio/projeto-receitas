@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/adicionar.css">
+    <link rel="icon" href="../../img/logo-receita.avif">
     <title>Adicionar</title>
 </head>
 <body>
@@ -23,6 +24,8 @@
                 <option value="doce">Doce</option>
             </select>
         </div>
+        <input type="text" id="tempo_preparo" class="tempo_preparo" placeholder="Tempo de preparo (minutos)">
+
         <br/>
         <br>
         <div class="butao">
@@ -40,11 +43,16 @@
 
         function adicionarReceita(){
             
+            let idReceita = Date.now();
             let nomereceita = document.getElementById("nomeReceita").value
             let receitaDescricao = document.getElementById("receita").value
             let imagem = document.getElementById("imagemReceita").value
             let popularesReceita = document.getElementById("popularesReceita").value 
+            let categoriaReceita = document.getElementById("categoria").value 
+            let tempoPreparoReceita = document.getElementById("tempo_preparo").value 
+
             let idUsu = JSON.parse(localStorage.getItem("usuarioLogado")).id
+            
             if (!localStorage.getItem("receitas")) {
                 const response =  fetch("../dados/receitas.json");
                 const dadosIniciais = response.json();
@@ -53,12 +61,15 @@
             }
 
             const novoReceita = {
+                id:idReceita.toString(),
                 nome:nomereceita,
                 img:imagem,
                 receita:receitaDescricao,
                 populares:popularesReceita,
                 idUsuario: idUsu,
-                publicado: "nao"
+                publicado: "nao",
+                categoria: categoriaReceita,
+                tempo_preparo: tempoPreparoReceita
               };
               
 

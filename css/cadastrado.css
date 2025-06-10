@@ -1,6 +1,14 @@
+@font-face {
+    font-family: chalet1;
+    src: url(../fontes/ChaletComprime/ChaletComprime\ CologneSixty.ttf);
+}
 html{
     background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
 }
 body{
     background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
+}
+#buta{
+
+    background-color: aqua;
 }

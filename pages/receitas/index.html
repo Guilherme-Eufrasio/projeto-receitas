@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/cadastrado.css">
+    <link rel="icon" href="../../img/logo-receita.avif">
     <title>MINHAS RECEITAS</title>
     <!-- Bootstrap core CSS -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
@@ -66,7 +67,7 @@
 
 
         sectionReceita.innerHTML = `
-            <div class="card shadow-sm">
+            <div class="card shadow-sm" id=minha_receita-${receita.id}>
                 <img src="../../${receita.img}" alt="foto-${receita.nome}">
                 <h2 class="fw-normal text-center">${receita.nome}</h2>
 
@@ -77,7 +78,8 @@
                     <p class="card-text">Receita: ${receita.receita}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group"> 
-                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="publicarReceita(${pos});">Publicar Receita</button>
+
+                            ${receita.publicado === "sim" ? `<button type="button" class="btn btn-sm btn-outline-secondary" onclick="despublicarReceita(${receita.id});">Despublicar Receita</button>` : `<button type="button" class="btn btn-sm btn-outline-secondary" onclick="publicarReceita(${receita.id});">Publicar Receita</button>` }
                             <button type="button" class="btn btn-sm btn-outline-secondary" onclick="abirConteudo(${pos})">Visualizar</button>
                             <button type="button" class="btn btn-sm btn-outline-secondary" onclick="editarReceita(${pos})">Editar</button>
                         </div>
@@ -99,10 +101,8 @@
 <body>
     <h1 id="nome">A</h1>
     <h2>Minhas receitas:</h2>
-    <button type="button" class="bota w-100 btn btn-lg btn-primary" >Publicar</button>
-    <button class="bota w-100 btn btn-lg btn-success"><a href="adicionar.html">Adicionar</a></button>  
-
-    <div class="album py-5 bg-body-tertiary">
+    <button class="bota btn btn-lg btn-success" id="buta"><a href="adicionar.html">Adicionar</a></button>  
+    <div class="album py-5 ">
         <div class="container " id="minhas_receitas">
            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
@@ -121,27 +121,67 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Deseja XXX
+          ...
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">SIM</button>
+          <button type="button" class="btn btn-primary pubReceita" id="pubReceita" >SIM</button>
         </div>
       </div>
     </div>
   </div>
     
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     <script>
 
 
         function publicarReceita(id) {
-            //const aluno = alunos.find(a => a.id === id);
-            //document.getElementById('alunoId').textContent = aluno ? aluno.id : "";
+            let controle_minhasreceitas =JSON.parse(localStorage.getItem("minhasReceitasPesquisados"));
 
+            const receita = controle_minhasreceitas.find(a => a.id.toString() === id.toString());
+            //document.getElementById('alunoId').textContent = aluno ? aluno.id : "";
+            document.getElementsByClassName('modal-body')[0].innerText = `Deseja postar essa receita ${receita.nome}?`
 
             new bootstrap.Modal(document.getElementById('modalMinhasReceitas')).show();
+            
+            document.getElementById("pubReceita").addEventListener("click", function(){ 
+                receita.publicado = "sim";
+                let todas_receitas = JSON.parse(localStorage.getItem("receitas"));
+                // Atualiza o localStorage com as alunos modificadas
+                const index = todas_receitas.findIndex(c => c.id ===  id.toString());
+                todas_receitas[index] = receita; // Substitui a campanha antiga pela nova
+                localStorage.setItem('receitas', JSON.stringify(todas_receitas));
+                // Fecha a modal
+                // Exibe uma mensagem de sucesso ou algo similar
+                alert("Cadastro da receita  atualizado com sucesso!");
+                location.reload();
+
+            });
+
         }        
+        function despublicarReceita(id) {
+            let controle_minhasreceitas =JSON.parse(localStorage.getItem("minhasReceitasPesquisados"));
+
+            const receita = controle_minhasreceitas.find(a => a.id.toString() === id.toString());
+            document.getElementsByClassName('modal-body')[0].innerText = `Deseja despublicar essa receita ${receita.nome}?`
+
+            new bootstrap.Modal(document.getElementById('modalMinhasReceitas')).show();
+            document.getElementById("pubReceita").addEventListener("click", function(){ 
+                receita.publicado = "nao";
+                let todas_receitas = JSON.parse(localStorage.getItem("receitas"));
+                // Atualiza o localStorage com as alunos modificadas
+                const index = todas_receitas.findIndex(c => c.id ===  id.toString());
+                todas_receitas[index] = receita; // Substitui a campanha antiga pela nova
+                localStorage.setItem('receitas', JSON.stringify(todas_receitas));
+                // Fecha a modal
+                // Exibe uma mensagem de sucesso ou algo similar
+                alert("Cadastro da receita  atualizado com sucesso!");
+                location.reload();
+
+            });            
+        }    
+
     </script>
 </body>
 </html>

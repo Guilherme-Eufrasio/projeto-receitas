@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas Salgadas</title>
+
+    <link rel="stylesheet" href="/css/cadastrado.css">
+    <link rel="icon" href="../../img/logo-receita.avif">
+
+    <!-- Bootstrap core CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+
+</head>
+<body>
+    <h2>Receitas salgadas</h2>
+    <button class="bota btn btn-lg btn-success" id="buta"><a href="login.html">Adicionar</a></button>  
+    <div class="album py-5 ">
+        <div class="container " id="receitas_salgadas">
+           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+           </div>
+        </div>
+     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+
+            //LISTAR TODAS AS RECEITAS  SALGADO
+            if (!localStorage.getItem("receitas")) {
+                try {
+                    const responseReceitas =  fetch("../dados/receitas.json");
+                    const dadosIniciaisReceitas =  responseReceitas.json();
+                    localStorage.setItem("receitas", JSON.stringify(dadosIniciaisReceitas));
+                } catch (erro) {
+                    console.error("Erro ao carregar receitas:", erro);
+                }
+            }
+            const receitas_salgadas = JSON.parse(localStorage.getItem("receitas"));
+
+            let resultados_receitas_salgadas = receitas_salgadas.filter(procurar_receita => 
+                procurar_receita.categoria.toLowerCase().includes("salgado")
+            );                     
+
+
+            if  (resultados_receitas_salgadas.length> 0){
+                for (let i = 0; i < resultados_receitas_salgadas.length; i++) {
+                    adicionarElemento(resultados_receitas_salgadas[i],i);        
+                }
+            }
+           
+        });
+
+    function adicionarElemento(receita, pos) {      
+        const container = document.getElementById("receitas_salgadas");            
+        let divContainer = container.getElementsByClassName('row')[0];
+        
+        // Criar um novo elemento para o conteudo do jogo
+        const sectionReceita = document.createElement("section");
+        
+        sectionReceita.setAttribute("id", `receita-${pos}`);            
+        sectionReceita.classList.add("col", "receita", "item2");
+
+        // Adicionar conteúdo
+        // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarCampanha">Editar via Target</button>
+
+
+        sectionReceita.innerHTML = `
+            <div class="card shadow-sm" id=minha_receita-${receita.id}>
+                <img src="../../${receita.img}" alt="foto-${receita.nome}">
+                <h2 class="fw-normal text-center">${receita.nome}</h2>
+
+                <div class="card-body">
+                    <span class="badge text-bg-primary">Popular: ${receita.populares}</span>
+                    <span class="badge text-bg-info">Publicado: ${receita.publicado}</span>
+                    <span class="badge text-bg-warning">Tempo de Preparo: ${receita.tempo_preparo} (minutos)</span>
+
+                    <p class="card-text">Receita: ${receita.receita}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group"> 
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Adicionar o novo elemento ao container
+        divContainer.appendChild(sectionReceita);       
+    
+    }
+
+    </script>
+</body>
+</html>
