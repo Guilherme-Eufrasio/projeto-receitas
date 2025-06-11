@@ -8,7 +8,14 @@ html{
 body{
     background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
 }
-#buta{
 
-    background-color: aqua;
+
+.controle-botao{
+    text-align: center;
+    padding:20px;
+}
+
+.controle-botao a{ 
+    text-decoration: none;
+    color: white;
 }
