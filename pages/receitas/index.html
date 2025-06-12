@@ -19,7 +19,7 @@
                 //console.log(usuarioLogado);
 
                 document.title = "Seja bem-vindo " + usuarioLogado.nome;
-                document.getElementById("nome").innerText = usuarioLogado.nome;
+                document.getElementById("nome").innerHTML = "Seja bem-vindo <b>Mestre "+ usuarioLogado.nome+"</b>";
             } else {
                 window.location.href = "../login.html";
             }
@@ -80,8 +80,8 @@
                         <div class="btn-group"> 
 
                             ${receita.publicado === "sim" ? `<button type="button" class="btn btn-sm btn-outline-secondary" onclick="despublicarReceita(${receita.id});">Despublicar Receita</button>` : `<button type="button" class="btn btn-sm btn-outline-secondary" onclick="publicarReceita(${receita.id});">Publicar Receita</button>` }
-                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="abirConteudo(${pos})">Visualizar</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="editarReceita(${pos})">Editar</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="gerenciarReceita('visualizar',${receita.id})">Visualizar</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="gerenciarReceita('editar',${receita.id})">Editar</button>
                         </div>
 
 
@@ -114,7 +114,7 @@
     
   
   
-  <!-- Modal -->
+  <!-- Modal DE AVISO EXIBIÇÃO -->
   <div class="modal fade" id="modalMinhasReceitas" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalMinhasReceitasLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -132,6 +132,26 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal GERENCIAR RECEITA-->
+  <div class="modal fade" id="modalGerenciarReceita" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalGerenciarReceitaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalGerenciarReceitaLabel"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="conteudo_gerenciar_receita">
+          ...
+        </div>
+        
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary pubReceita" id="pubReceita" >SIM</button>
+        </div> -->
+      </div>
+    </div>
+  </div>  
     
   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
@@ -184,6 +204,107 @@
             });            
         }    
 
+        function gerenciarReceita(funcao, idReceita){
+            let controle_minhasreceitas =JSON.parse(localStorage.getItem("minhasReceitasPesquisados"));
+
+            const receita = controle_minhasreceitas.find(r => r.id.toString() === idReceita.toString());
+            //document.getElementById('alunoId').textContent = aluno ? aluno.id : "";
+            document.getElementById("modalGerenciarReceitaLabel").innerText = `GERENCIAR RECEITA ${receita.nome}`
+
+            
+            document.getElementById('conteudo_gerenciar_receita').innerHTML= `
+            <form name="formGerenciarReceita" id="formGerenciarReceita${receita.id}" >
+                <label>Nome receita</label><br>
+                <input type="text"  id="nomeReceita" class="nomereceita form-control" placeholder="Nome da Receita" value="${receita.nome}" ${funcao==="visualizar" ? "readonly" : ""}>
+                <br>
+                <label>Imagem</label><br>
+                <input type="url"  id="imagemReceita" class="image form-control" placeholder="Link da imagem da receita" value="${receita.img}" ${funcao==="visualizar" ? "readonly" : ""}>
+                <br>
+                <label>Receita</label><br>
+                <textarea class="form-control" id="receita" class="descricao form-control" placeholder="Receita" value="${receita.receita}"  ${funcao==="visualizar" ? "readonly" : ""}  rows="5"></textarea>
+
+
+                <p id="escolha">POPULAR? </p>
+                <select name="popularesReceita" id="popularesReceita" class="popular form-control" ${funcao==="visualizar" ? "disabled" : ""}>
+                    <option value="sim" ${receita.populares==="sim" ? "selected" : ""} >SIM</option>
+                    <option value="nao" ${receita.populares==="nao" ? "selected" : ""} >NÃO</option>
+                </select>
+                <br>
+                <div class="organizar_itens">
+                    <p>CATEGORIA:</p>
+                    <select name="categoria" id="categoria" class="categoria form-control" ${funcao==="visualizar" ? "disabled" : ""}>
+                        <option value="salgado"  ${receita.categoria==="salgado" ? "selected" : ""}>Salgado</option>
+                        <option value="doce" ${receita.categoria==="doce" ? "selected" : ""}>Doce</option>
+                    </select>
+                </div>
+                <br>
+                <div class="organizar_itens">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="receita_publicado" ${receita.publicado==="sim" ? "checked" : ""} disabled ${funcao==="visualizar" ? "readonly" : ""}>
+                        <label class="form-check-label" for="receita_publicado">PUBLICADO</label>
+                    </div>                    
+
+                </div>                
+                <br>
+                <label>Tempo de Preparo (em minutos)</label><br>
+
+                <input type="text" id="tempo_preparo" class="tempo_preparo form-control" placeholder="Tempo de preparo (minutos)" value="${receita.tempo_preparo}" ${funcao==="visualizar" ? "readonly" : ""}>
+
+                <br/>
+                <br>                
+            </form>            
+
+            ` 
+
+            if(funcao==="editar"){
+                document.getElementById('conteudo_gerenciar_receita').innerHTML+= `
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar edição</button>
+                    <button type="button" class="btn btn-primary pubReceita" id="pubReceita"  onclick="salvarEdicaoReceita('${receita.id}')">SALVAR MODIFICAÇÕES</button>
+                </div>
+                `
+            }
+
+            
+            
+
+            new bootstrap.Modal(document.getElementById('modalGerenciarReceita')).show();
+        }
+        function salvarEdicaoReceita(idReceita){
+            let receitas =JSON.parse(localStorage.getItem("receitas"));
+
+            const receita_editada = receitas.find(a => a.id.toString() === idReceita.toString());            
+
+             // Atualiza o localStorage com as alunos modificadas
+             const index = receitas.findIndex(r => r.id.toString() === idReceita.toString());
+             console.log(idReceita, receita_editada, index)
+             
+             let receitaEditada ={
+                id : idReceita,
+                nome : document.getElementById('nomeReceita').value,
+                img : document.getElementById('imagemReceita').value,
+                receita  : document.getElementById('receita').value,
+                populares : document.getElementById('popularesReceita').value,
+                categoria : document.getElementById('categoria').value,
+                tempo_preparo : document.getElementById('tempo_preparo').value
+             }
+             
+ 
+            receitas[index] = receitaEditada; // Substitui a campanha antiga pela nova             
+            //localStorage.removeItem("minhasReceitasPesquisados");
+            localStorage.setItem('receitas', JSON.stringify(receitas));
+            
+
+            //AGORA PRECISA ATUALIZAR AS MINHAS RECEITAS
+            let controle_minhasreceitas =JSON.parse(localStorage.getItem("minhasReceitasPesquisados"));
+            const index2 = controle_minhasreceitas.findIndex(r => r.id.toString() === idReceita.toString());
+            controle_minhasreceitas[index2] = receitaEditada; // Substitui a campanha antiga pela nova             
+            localStorage.setItem('minhasReceitasPesquisados', JSON.stringify(controle_minhasreceitas));
+
+            //Exibe uma mensagem de sucesso ou algo similar
+            alert("Cadastro da receita atualizado com sucesso!");
+            location.reload();
+        }      
     </script>
 </body>
 </html>
