@@ -1,198 +1,132 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria Responsiva</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
-      padding: 20px;
-      margin: 0%;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-
-    }
-
-    .galeria {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 20px;
-    }
-
-    .item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .item img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .info {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.75);
-      color: white;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      transform: translateY(100%);
-      transition: transform 0.4s ease;
-    }
-
-    .item:hover img {
-      transform: scale(1.05);
-    }
-
-    .item:hover .info {
-      transform: translateY(0);
-    }
-
-    .info h3 {
-      margin-bottom: 5px;
-      font-size: 18px;
-    }
-
-    .info p {
-      font-size: 14px;
-    }
-    @media screen and (max-width:450px){
-      .galeria{
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-      
-    }
-  </style>
-<style>
-  .fullscreen-menu.collapse.show {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(33, 37, 41, 0.95); /* quase preto com transparência */
-      z-index: 1050; /* maior que navbar padrão */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-  }
-
-  .fullscreen-menu .navbar-nav {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .fullscreen-menu .nav-link {
-      font-size: 1.5rem;
-      margin: 1rem 0;
-      color: #fff !important;
-  }
-
-  .fullscreen-menu .dropdown-menu {
-      position: static;
-      float: none;
-      background-color: transparent;
-      border: none;
-      box-shadow: none;
-  }
-
-  .fullscreen-menu .dropdown-item {
-      color: #fff;
-      text-align: center;
-  }
-
-  .fullscreen-menu .navbar-brand,
-  .fullscreen-menu .navbar-toggler {
-      display: none;
-  }
-  
-</style>  
-  <link rel="stylesheet" href="../css/maispopu.css">
-</head>
-<body>
-
-  
-    <header>
-        <ul class="menu_todos">
-            <img src="../img/logo-site.png" alt="Logo Principal do Site - Master Cook"></a>
-        </ul>
-    </header>  
-<h1 class="titulos_segundaspaginas">TODAS AS RECEITAS</h1>
-  <div class="galeria">
-    <div class="item">
-      <img src="../img/rec-macarrao.JPG" alt="Imagem 1">
-      <div class="info">
-        <h3>Macarronada</h3>
-        <p>Desliciosa receita de macarrão com carne moída!</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="../img/rec-frangoassado.JPG" alt="Imagem 2">
-      <div class="info">
-        <h3>Frango Assado</h3>
-        <p>Receita de um suculento Frango Assado!</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="../img/rec-lasanha.JPG" alt="Imagem 3">
-      <div class="info">
-        <h3>Lasanha</h3>
-        <p>Legenda ou contexto informativo aqui.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="../img/rec-frangoamilanesa.JPG" alt="Imagem 4">
-      <div class="info">
-        <h3>Imagem 4</h3>
-        <p>Mais uma imagem com descrição ao passar o mouse.</p>
-      </div>
-
-    </div>
-        <div class="item">
-      <img src="../img/parmegiana.avif" alt="Imagem 1">
-      <div class="info">
-        <h3>Imagem 1</h3>
-        <p>Descrição da primeira imagem na galeria.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="../img/strogonoff.jpeg" alt="Imagem 2">
-      <div class="info">
-        <h3>Imagem 2</h3>
-        <p>Texto explicativo ou curioso sobre esta imagem.</p>
-      </div>
-    </div>
-  </div>
-  
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Receitas Populares</title>
+        <style>
+            * {
+              box-sizing: border-box;
+              margin: 0;
+              padding: 0;
+            }
+            body {
+              font-family: Arial, sans-serif;
+              background-color: #121212;
+              color: #fff;              
+              margin: 0%;
+            }
+            h1 {
+              text-align: center;
+              margin-bottom: 30px;
+            }
+            .galeria {
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr;
+              gap: 20px;
+              padding: 15px;
+            }
+            .item {
+              position: relative;
+              overflow: hidden;
+              border-radius: 10px;
+              cursor: pointer;
+            }
+            .item img {
+              width: 100%;
+              height: auto;
+              max-height: 350px;
+              display: block;
+              transition: transform 0.4s ease;
+            }
+            .info {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              background: rgba(0, 0, 0, 0.75);
+              color: white;
+              padding: 15px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              transform: translateY(100%);
+              transition: transform 0.4s ease;
+            }
+            .item:hover img {
+              transform: scale(1.05);
+            }
+            .item:hover .info {
+              transform: translateY(0);
+            }
+            .info h3 {
+              margin-bottom: 5px;
+              font-size: 18px;
+            }
+            .info p {
+              font-size: 14px;
+            }
+            @media screen and (max-width:450px){
+              .galeria{
+                display: grid;
+                grid-template-columns: 1fr;
+              }
+            }
+        </style>
+        <style>
+            .fullscreen-menu.collapse.show {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              background-color: rgba(33, 37, 41, 0.95); /* quase preto com transparência */
+              z-index: 1050; /* maior que navbar padrão */
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+            }
+            .fullscreen-menu .navbar-nav {
+              flex-direction: column;
+              align-items: center;
+            }
+            .fullscreen-menu .nav-link {
+              font-size: 1.5rem;
+              margin: 1rem 0;
+              color: #fff !important;
+            }
+            .fullscreen-menu .dropdown-menu {
+              position: static;
+              float: none;
+              background-color: transparent;
+              border: none;
+              box-shadow: none;
+            }
+            .fullscreen-menu .dropdown-item {
+              color: #fff;
+              text-align: center;
+            }
+            .fullscreen-menu .navbar-brand,
+            .fullscreen-menu .navbar-toggler {
+              display: none;
+            }
+        </style>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/maispopu.css">
+        <link rel="icon" href="../img/logo-receita.avif">
 
+    </head>
+    <body>
+        <header>
+            <ul class="menu_todos">
+                <img src="../img/logo-site.png" alt="Logo Principal do Site - Master Cook"></a>
+            </ul>
+        </header>
+        <h1 class="titulos_segundaspaginas">TODAS AS RECEITAS</h1>
+        <div class="galeria" id="galeria_populares"></div> <!--TODAS AS RECEITAS POPULARES -->
         <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
             <symbol id="check2" viewBox="0 0 16 16">
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
@@ -208,18 +142,14 @@
                 <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
             </symbol>
         </svg>
-
-       
-
         <nav class="navbar fixed-bottom navbar-expand-sm" id="menu-mobile">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="/img/logo-site.png" alt="Logo Principal do Site - Master Cook" width="50px">
+                <img src="/img/logo-site.png" alt="Logo Principal do Site - Master Cook" width="50px">
                 </a> 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" id="icone"> <span class="navbar-toggler-icon" ></span> </button> 
                 <div class="collapse navbar-collapse fullscreen-menu" id="navbarCollapse">
                     <button type="button" class="btn-close text-white position-absolute top-0 end-0 m-3 d-sm-none" id="closeMenuBtn" aria-label="Fechar menu"></button>
-
                     <ul class="navbar-nav">
                         <li class="nav-item dropup">
                             <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown" aria-expanded="false">Mais Populares</a> 
@@ -228,7 +158,7 @@
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
-                        </li>        
+                        </li>
                         <li class="nav-item dropup">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Receitas</a> 
                             <ul class="dropdown-menu">
@@ -236,30 +166,104 @@
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
-                        </li>                                          
+                        </li>
                         <li class="nav-item"> <a class="nav-link " href="#">Cadastro</a> </li>
                         <li class="nav-item"> <a class="nav-link" href="#">Sobre</a> </li>
-
                     </ul>
                 </div>
             </div>
         </nav>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const navLinks = document.querySelectorAll('#navbarCollapse .nav-link, #navbarCollapse .dropdown-item');
-            const closeBtn = document.getElementById('closeMenuBtn');
-            const navbarCollapseElement = document.getElementById('navbarCollapse');
-            const navbarCollapse = new bootstrap.Collapse(navbarCollapseElement, { toggle: false });
 
+        <!-- Modal EXIBIR RECEITA-->
+        <div class="modal fade" id="modalExibirReceita" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalExibirReceitaLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h1 class="modal-title fs-5 text-center" id="modalExibirReceitaLabel"></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="conteudo_gerenciar_receita">
+                        ...
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+        <script>
+            const receitas_populares =JSON.parse(localStorage.getItem("receitas"));
+            const mestres_cucas = JSON.parse(localStorage.getItem("usuarios"));          
+            document.addEventListener("DOMContentLoaded", function () {
+                const navLinks = document.querySelectorAll('#navbarCollapse .nav-link, #navbarCollapse .dropdown-item');
+                const closeBtn = document.getElementById('closeMenuBtn');
+                const navbarCollapseElement = document.getElementById('navbarCollapse');
+                const navbarCollapse = new bootstrap.Collapse(navbarCollapseElement, { toggle: false });
+            
+            
+                closeBtn.addEventListener("click", () => {
+                    navbarCollapse.hide();
+                });
+            
 
-            closeBtn.addEventListener("click", () => {
-                navbarCollapse.hide();
+                
+                /*SO EXIBE AS RECEITAS POPULARES E QUE ESTÃO PUBLICADAS*/
+                let resultados = receitas_populares.filter(procurar_receita => 
+                        procurar_receita.populares.toString().toLowerCase() === "sim"  &&          
+                        procurar_receita.publicado.toString().toLowerCase() === "sim"
+                );   
+                    
+                //console.log(resultados);     
+                let divGaleria  = document.getElementById("galeria_populares");
+                if  (resultados.length> 0){
+                  for (let i = 0; i < resultados.length; i++) {
+                    let receita = resultados[i];
+                    //Encontrar o Mestre da Receita
+                    let mestre = mestres_cucas.find(u => u.id.toString() === receita.idUsuario.toString());
+            
+                    divGaleria.innerHTML += `
+                    <a title="${receita.nome} do mestre ${mestre.nome}" onclick="exibirReceita('${receita.id}', '${mestre.nome}')">
+                      <div class="item" id="receita-${receita.id}">
+                        <img src="${receita.img}" alt="Imagem da receita ${receita.nome}">
+                        <div class="info">
+                          <h3>${receita.nome}</h3>
+                          <h6>Mestre ${mestre.nome}</h5>
+                          <p>
+                            <span class="badge text-bg-primary">${receita.categoria}</span>
+                            <span class="badge text-bg-info">${receita.tempo_preparo}min</span>
+                          </p>
+                        </div>                
+                      </div>
+                    </a>
+                    `;
+                  }
+                }
             });
-        });
-    </script>
-  
-  
+            
+            function exibirReceita(idReceita, mestre){
 
-</body>
+                let receita = receitas_populares.find(r => r.id.toString() === idReceita.toString());
+                console.log(receita);
+                //document.getElementById('alunoId').textContent = aluno ? aluno.id : "";
+                document.getElementById("modalExibirReceitaLabel").innerText = `DETALHES DA RECEITA ${receita.nome}`
+            
+                
+                document.getElementById('conteudo_gerenciar_receita').innerHTML= `
+                <form name="formGerenciarReceita" id="formGerenciarReceita${receita.id}" >
+                    <p>${receita.nome}</p>                    
+                    <label>Receita</label><br>
+                    <textarea class="form-control" id="receita" class="descricao form-control" placeholder="Receita" readonly  rows="5">${receita.receita}</textarea>                                            
+                    <br>
+                    <p>
+                      <span class="badge text-bg-primary"> POPULAR ${receita.populares==="sim" ? "SIM" : "NÃO"}</span>
+                      <span class="badge text-bg-warning">${receita.categoria==="salgado" ? "Salgado" : "Doce"}</span>
+                      <span class="badge text-bg-info">${receita.tempo_preparo}min</span>
+                    </p>
+                    <h5>Receita do Mestre <mark><b>${mestre}</b></mark></h5>
+                </form>            
+            
+                `                 
+                new bootstrap.Modal(document.getElementById('modalExibirReceita')).show();
+
+            }
+        </script>
+    </body>
 </html>

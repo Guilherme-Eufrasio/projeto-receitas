@@ -11,6 +11,20 @@ body{
 form{
     justify-items: center;
 }
+.logo-principal{
+    display: flex;
+    justify-content: center;
+}
+.logo-principal img{
+    width: 150px;
+    margin-right: 40px;
+}
+.adicionar-receita{
+    font-family: chalet1;
+    background-color: #ffae00;
+    text-align: center;
+    color: #002462;
+}
 .nomereceita{
     display: block;
     width: 20%;

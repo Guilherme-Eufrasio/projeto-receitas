@@ -1,33 +1,15 @@
-@font-face {
-    font-family: chalet1;
-    src: url(../fontes/ChaletComprime/ChaletComprime\ CologneSixty.ttf);
-}
 
-@font-face {
-    font-family: chalet2;
-    src: url(../fontes/ChaletComprime/ChaletLondonNineteenSixty.ttf);
-}
 html{
     background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
-
+}
+@media (max-width:580px)and(min-width:860px){
+    
 }
 body{
     margin: 0%;
-    background:linear-gradient(to right,#FAFF9F,#E1BA63) 
 }
-#menu-mobile{
-    background:linear-gradient(to right, #4069F8,#002462) ;
-}
-#icone{
-    background-color:#E1BA63 ;
-}
-#closeMenuBtn{
-    background-color: rgb(255, 22, 22);
-}
-#navbarCollapse{
-    background: linear-gradient(to right, #4068f896,#002462b7);
-}
-  
+
+
 .menu-container{
     background:linear-gradient(to right,#4069F8,#002462) ;
     display: flex;
@@ -57,10 +39,7 @@ body{
     color: #fff;
     font-size: 26pt;
 }
-.menu-container ul.menu li a:hover{
-    color: #cbcbcb;
-    /* background-color: #ff0000; */
-}
+
 
 .menu-container ul.menu li:first-child,.menu-container ul.menu li:last-child{
     flex-grow: 2;    
@@ -89,34 +68,16 @@ body{
 }
 
 .menu-container .submenu li{
-    width: 88px;
+    width: 90px;
 }
 .menu-container .submenu.ativo{    
     display: flex;
     flex-direction: column; 
     max-height: 150px; /* A altura máxima que o submenu pode atingir */
     box-shadow: 0px 8px 20px 5px rgba(0, 0, 0, 0.274)
-    
 }
 
-.menu-container .submenu ul li a{
-    text-decoration: none;
-    color: #fff;
-    font-size: 20pt;
-    padding: 10px 20px;
-    display: block; /* Faz o link ocupar toda a largura do item */
-}
-.menu-container .submenu li:hover {
-    background-color: #020f4221; /* Cor de fundo ao passar o mouse */
-    
-}
 
-.menu-container .submenu ul li a:hover{
-    color: #ff0000;
-    font-size: 20pt;
-    padding: 10px 20px;
-    display: block; /* Faz o link ocupar toda a largura do item */
-}
 
 .seta{
     display: inline-block;
@@ -190,73 +151,71 @@ body{
     transform: scale(1.1);
 }
 
+/* .pratos-destaques2 div.img-container{
+    width: 500px;
+    height: 350px;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
 
-
-/* pagina "TODOS" */
-/* pagina "TODOS" */
-/* pagina "TODOS" */
-/* pagina "TODOS" */
-/* pagina "TODOS" */
-/* pagina "TODOS" */
-/* pagina "TODOS" */
-
-
-
-.menu_todos img{ 
+.pratos-destaques2  .img-container img{
+    width: 100%;
     height: 100%;
-    width: 10%;
-    max-width: 472px;
-    padding-bottom: 83px;
-}
-
-.menu_todos{
-    text-decoration: none;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    color: #eb0606;
-    font-family: chalet1;
-    letter-spacing: 0px;
-    /* font-size: 35px;
-    border-radius: 33px; */
     -webkit-transition: -webkit-transform .5s ease;
-    transition: 0.5s;
-    margin: 15 0px;
-    /* -webkit-transform: scale(1.1);
-    transform: scale(1.1); */
+    transition: transform .5s ease;
+ }
+ 
+ .pratos-destaques2 .img-container:hover img{
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+ } */
+
+/* 
+ .pratos-destaques3 img {
+    transition: 0.4s;
+  }
+  
+  .pratos-destaques3 div:hover img {
+    opacity: 0.3;
+  }
+  
+  .pratos-destaques3 img:hover {
+    opacity: 1;
+  } */
+/* 
+  .pratos-destaques3 img {
+    transition: opacity 0.4s ease;
 }
 
-.todas_as_receitas{
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    color: #ffffff;
-    font-family: chalet1;
-    letter-spacing: 0px;
-    font-size: 35px;
-    position: fixed;
-}
-.titulos_segundaspaginas{
-    font-family: chalet1;
-    text-align: center;
-    color: #002462;
-    font-family: chalet1;
-    letter-spacing: 0px;
-    font-size: 39px;
-    background-color: #ffae00;
-}
-@media only screen and (max-width:576px){
-    .menu_todos img{
-        width: 30%;
-        padding-bottom: 20px;
-    }
-    
+/* Efeito de hover para o item que está em destaque 
+.pratos-destaques3 div:hover img {
+    opacity: 1;
+}*\
+
+/* Efeito de hover para as imagens que NÃO estão no item em destaque 
+.pratos-destaques3 div:hover ~ div img {
+    opacity: 0.3;
 }
 
+.pratos-destaques3 div:hover img {
+    opacity: 1;
+} 
 
-@media (min-width: 576px) {
-    #menu-mobile{
-        display: none;
-    }    
+
+.pratos-destaques3 img {
+    transition: opacity 0.4s ease;
+}*\
+
+/* Quando o mouse passar sobre um div, as imagens de outros itens (não em destaque) ficam com opacidade 0.3 
+.pratos-destaques3 div:hover img {
+    opacity: 1;} /* A imagem do item que está em destaque fica normal */
+
+
+/* .pratos-destaques3 div:hover ~ div img {
+    opacity: 0.3;} /* As imagens dos outros itens têm opacidade 0.3 */
+
+
+/* .pratos-destaques3 div:hover ~ div:hover img {
+    opacity: 0.3; /* Evita que as imagens de itens em hover sejam alteradas 
 }
+*\
