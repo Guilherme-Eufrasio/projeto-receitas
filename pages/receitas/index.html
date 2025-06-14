@@ -98,6 +98,29 @@
         </script>
     </head>
     <body>
+        <nav class="menu-container">
+            <ul class="menu">
+                    <li><a href="../../index.html"><img src="/img/logo-site.png" alt="Logo Principal do Site - Master Cook"></a></li>
+                    <li>
+                        <a class="menu_populares" href="#" onclick="abrirSubMenu('menu_populares')">MAIS POPULARES <span class="seta"></span></a>
+                        <ul class="submenu">
+                            <li><a href="../../pages/maispopu.html">TODOS</a></li>
+                            <li><a href="../../pages/maispop-simples.html">SIMPLES</a></li>
+                        </ul>
+                    </li>
+    
+                    <li>
+                        <a class="menu_receitas" href="#" onclick="abrirSubMenu('menu_receitas')">RECEITAS<span class="seta"></span></a>
+                        <ul class="submenu ">
+                            <li><a href="../../pages/doces.html">DOCES</a></li>
+                            <li><a href="../../pages/salgados.html">SALGADOS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../pages/sobre.html">SOBRE</a></li>
+            </ul>
+        </nav>
+
+
         <header style="display: flex; justify-content: space-between; align-items: center;">
             <div>
                 <h1 id="nome"></h1>
@@ -329,5 +352,6 @@
             });
 
         </script>
+        <script src="../../submenu.js"></script>
     </body>
 </html>

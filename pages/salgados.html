@@ -98,7 +98,7 @@
     </header>  
     <h1 class="tituloPrincipal">RECEITAS SALGADAS</h1>
 
-  <div class="galeria Masonry-Grid-Layouts">
+  <div class="galeria Masonry-Grid-Layouts" id="galeria_populares">
     <div class="item">
       <img src="../img/panquecas.jpeg" alt="Imagem 1">
       <div class="info">
@@ -106,6 +106,83 @@
         <p>Deliciosa receita de Brigadeiro Tradicional!</p>
       </div>
     </div>
+    <script>
+      const receitas_populares =JSON.parse(localStorage.getItem("receitas"));
+      const mestres_cucas = JSON.parse(localStorage.getItem("usuarios"));          
+      document.addEventListener("DOMContentLoaded", function () {
+          const navLinks = document.querySelectorAll('#navbarCollapse .nav-link, #navbarCollapse .dropdown-item');
+          const closeBtn = document.getElementById('closeMenuBtn');
+          const navbarCollapseElement = document.getElementById('navbarCollapse');
+          const navbarCollapse = new bootstrap.Collapse(navbarCollapseElement, { toggle: false });
+      
+      
+          closeBtn.addEventListener("click", () => {
+              navbarCollapse.hide();
+          });
+      
+
+          
+          /*SO EXIBE AS RECEITAS POPULARES E QUE ESTÃO PUBLICADAS*/
+          let resultados = receitas_populares.filter(procurar_receita => 
+                  procurar_receita.populares.toString().toLowerCase() === "sim"  &&          
+                  procurar_receita.publicado.toString().toLowerCase() === "sim"  &&
+                  procurar_receita.categoria.toString().toLowerCase() === "salgado"
+          );   
+              
+          //console.log(resultados);     
+          let divGaleria  = document.getElementById("galeria_populares");
+          if  (resultados.length> 0){
+            for (let i = 0; i < resultados.length; i++) {
+              let receita = resultados[i];
+              //Encontrar o Mestre da Receita
+              let mestre = mestres_cucas.find(u => u.id.toString() === receita.idUsuario.toString());
+      
+              divGaleria.innerHTML += `
+              <a title="${receita.nome} do mestre ${mestre.nome}" onclick="exibirReceita('${receita.id}', '${mestre.nome}')">
+                <div class="item" id="receita-${receita.id}">
+                  <img src="${receita.img}" alt="Imagem da receita ${receita.nome}">
+                  <div class="info">
+                    <h3>${receita.nome}</h3>
+                    <h6>Mestre ${mestre.nome}</h5>
+                    <p>
+                      <span class="badge text-bg-primary">${receita.categoria}</span>
+                      <span class="badge text-bg-info">${receita.tempo_preparo}min</span>
+                    </p>
+                  </div>                
+                </div>
+              </a>
+              `;
+            }
+          }
+      });
+      
+      function exibirReceita(idReceita, mestre){
+
+          let receita = receitas_populares.find(r => r.id.toString() === idReceita.toString());
+          console.log(receita);
+          //document.getElementById('alunoId').textContent = aluno ? aluno.id : "";
+          document.getElementById("modalExibirReceitaLabel").innerText = `DETALHES DA RECEITA ${receita.nome}`
+      
+          
+          document.getElementById('conteudo_gerenciar_receita').innerHTML= `
+          <form name="formGerenciarReceita" id="formGerenciarReceita${receita.id}" >
+              <p>${receita.nome}</p>                    
+              <label>Receita</label><br>
+              <textarea class="form-control" id="receita" class="descricao form-control" placeholder="Receita" readonly  rows="5">${receita.receita}</textarea>                                            
+              <br>
+              <p>
+                <span class="badge text-bg-primary"> POPULAR ${receita.populares==="sim" ? "SIM" : "NÃO"}</span>
+                <span class="badge text-bg-warning">${receita.categoria==="salgado" ? "Salgado" : "Doce"}</span>
+                <span class="badge text-bg-info">${receita.tempo_preparo}min</span>
+              </p>
+              <h5>Receita do Mestre <mark><b>${mestre}</b></mark></h5>
+          </form>            
+      
+          `                 
+          new bootstrap.Modal(document.getElementById('modalExibirReceita')).show();
+
+      }
+  </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

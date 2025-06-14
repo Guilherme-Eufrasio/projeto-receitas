@@ -197,11 +197,10 @@ body{
 
 
 .menu_todos img{ 
-    max-height: 119x;
+    
     height: 100%;
-    width: 7%;
-    max-width: 472px;
-    padding-bottom: 83px;
+    width: 140px;
+    margin-right: 34px;
 }
 .menu_todos{
     text-decoration: none;
