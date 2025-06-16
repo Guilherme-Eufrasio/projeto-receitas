@@ -22,18 +22,18 @@
         <textarea name="" class="descricao form-control" id="receita" cols="30" rows="10" placeholder="Receita"></textarea>
         <!-- <input type="text" id="receita" class="descricao" placeholder="Receita"> -->
         <p id="escolha">POPULAR? </p>
-        <select name="popularesReceita" id="popularesReceita" class="popular">
+        <select name="popularesReceita" id="popularesReceita" class="popular" required>
             <option value="sim">SIM</option>
             <option value="nao">NÃO</option>
         </select>
         <div class="organizar_itens">
             <p>CATEGORIA:</p>
-            <select name="categoria" id="categoria" class="categoria form-control">
+            <select name="categoria" id="categoria" class="categoria form-control" required>
                 <option value="salgado">Salgado</option>
                 <option value="doce">Doce</option>
             </select>
         </div>
-        <input type="text" id="tempo_preparo" class="tempo_preparo" placeholder="Tempo de preparo (minutos)">
+        <input type="number" id="tempo_preparo" class="tempo_preparo" placeholder="Tempo de preparo (minutos)" required>
 
         <br/>
         <br>

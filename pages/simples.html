@@ -125,7 +125,7 @@
                 <a href="../index.html"><img src="../img/logo-site.png" alt="Logo Principal do Site - Master Cook"></a>
             </ul>
         </header>
-        <h1 class="titulos_segundaspaginas">TODAS AS RECEITAS DOCES</h1>
+        <h1 class="titulos_segundaspaginas">TODAS AS RECEITAS SIMPLES</h1>
         <div class="galeria" id="galeria_populares"></div> <!--TODAS AS RECEITAS POPULARES -->
         <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
             <symbol id="check2" viewBox="0 0 16 16">
@@ -207,8 +207,7 @@
                 /*SO EXIBE AS RECEITAS POPULARES E QUE ESTÃO PUBLICADAS*/
                 let resultados = receitas_populares.filter(procurar_receita => 
                       parseInt(procurar_receita.tempo_preparo) <=45  &&          
-                      procurar_receita.publicado.toString().toLowerCase() === "sim"  &&
-                      procurar_receita.categoria.toString().toLowerCase() === "doce"
+                        procurar_receita.publicado.toString().toLowerCase() === "sim"
                 );   
                     
                 //console.log(resultados);     
