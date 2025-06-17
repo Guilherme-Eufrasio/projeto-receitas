@@ -1,11 +1,11 @@
 @font-face {
     font-family: chalet1;
-    src: url(../fontes/ChaletComprime/ChaletComprime\ CologneSixty.ttf);
+    src: url(fontes/ChaletComprime/ChaletComprime\ CologneSixty.ttf);
 }
 
 @font-face {
     font-family: chalet2;
-    src: url(../fontes/ChaletComprime/ChaletLondonNineteenSixty.ttf);
+    src: url(fontes/ChaletComprime/ChaletLondonNineteenSixty.ttf);
 }
 html{
     background:linear-gradient(to right,#FAFF9F,#E1BA63) ;
@@ -116,7 +116,6 @@ body{
     letter-spacing: 0px;
     font-size: 35px;
 }
-    
 
 
 .opcoes a{
